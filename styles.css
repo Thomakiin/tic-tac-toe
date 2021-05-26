@@ -1,9 +1,6 @@
-div {
-    color: black;
-}
-
-* {
-    color: black;
+:root {
+    --cell-size: 100px;
+    --mark-size: calc(var(--cell-size) * .9);
 }
 
 .board {
@@ -15,10 +12,54 @@ div {
     align-content: center;
 }
 
+.board:hover {
+    cursor: pointer;
+}
+
 .cell {
     box-sizing: border-box;
     width: 100px;
     height: 100px;
     background-color: white;
     border: 1px solid black;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.cell.x:before {
+    content: '';
+    position: absolute;
+    width: calc(var(--mark-size) * .15);
+    height: var(--mark-size);
+    background-color: black;
+    transform: rotate(45deg);
+}
+.cell.x:after {
+    content: '';
+    position: absolute;
+    width: calc(var(--mark-size) * .15);
+    height: var(--mark-size);
+    background-color: black;
+    transform: rotate(-45deg);
+}
+
+.cell.circle::before {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    width: calc(var(--mark-size) * .9);
+    height: calc(var(--mark-size) * .9);
+    background-color: black;
+}
+
+.cell.circle::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    width: calc(var(--mark-size) * .6);
+    height: calc(var(--mark-size) * .6);
+    background-color: white;
 }
